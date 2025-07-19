@@ -1,0 +1,468 @@
+/* =======================================================
+   Grundlegende globale Stile (body, main)
+   ======================================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Moderne Schriftart */
+    margin: 0;
+    padding: 0; /* padding auf 0 gesetzt, da main es handhabt */
+    background-color: #ECEFF1; /* Sehr helles Grau für den Hintergrund */
+    color: #37474F; /* Dunkles Graublau für Haupttext */
+    display: flex;
+    flex-direction: column; /* Für vertikale Anordnung (Header, Main, Footer falls vorhanden) */
+    min-height: 100vh; /* Mindestens die volle Viewport-Höhe */
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+    -webkit-font-smoothing: antialiased; /* Glattere Schriftdarstellung */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    flex-grow: 1; /* Nimmt den verbleibenden Platz ein */
+    display: flex;
+    justify-content: center; /* Zentriert Inhalt horizontal */
+    align-items: center; /* Zentriert Inhalt vertikal */
+    padding: 20px; /* Abstand um den Hauptinhalt */
+    box-sizing: border-box; /* Padding in der Breite/Höhe enthalten */
+}
+
+/* =======================================================
+   Seiten-Container (.page)
+   ======================================================= */
+.page {
+    display: none; /* Alle Seiten standardmäßig verstecken */
+    background-color: #FFFFFF; /* Reines Weiß für Seitenhintergrund */
+    padding: 30px;
+    border-radius: 12px; /* Etwas größere Abrundung */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Dezenter, modernerer Schatten */
+    text-align: center; /* Text innerhalb der Seite zentrieren */
+    max-width: 600px; /* Maximale Breite für größere Bildschirme */
+    width: 100%; /* Nimmt 100% der verfügbaren Breite innerhalb von main ein */
+    box-sizing: border-box; /* Padding und Border in der Breite enthalten */
+    animation: fadeIn 0.5s ease-out; /* Sanfter Fade-In Effekt */
+    /* position: relative;  Diese Zeile ist nicht mehr nötig, da der Profilbutton nun im normalen Flow ist */
+}
+
+.page.active {
+    display: block; /* Aktive Seite anzeigen */
+}
+
+/* Fade-In Animation für Seitenwechsel */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =======================================================
+   Generische Überschriften und Absätze
+   ======================================================= */
+h1, h2 {
+    color: #546E7A; /* Ein mittleres Graublau für Überschriften */
+    margin-bottom: 25px; /* Einheitlicher Abstand */
+    font-weight: 600; /* Etwas fetter */
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #455A64; /* Dunkleres Grau für Absätze */
+}
+
+/* =======================================================
+   Formular-Elemente (Inputs, Labels)
+   ======================================================= */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block; /* Jedes Label in einer neuen Zeile */
+    margin-bottom: 8px;
+    text-align: left; /* Text linksbündig */
+    font-weight: 600; /* Fetter für Labels */
+    color: #455A64; /* Dunkleres Grau für Labels */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="file"] {
+    width: calc(100% - 24px); /* Volle Breite abzüglich Padding */
+    padding: 12px; /* Einheitliches Padding */
+    margin-bottom: 15px;
+    border: 1px solid #B0BEC5; /* Helleres Grau für Rand */
+    border-radius: 6px; /* Leichter abgerundet */
+    font-size: 1.05em;
+    box-sizing: border-box; /* Wichtig für die Breite */
+    color: #37474F; /* Textfarbe im Inputfeld */
+    background-color: #F8F9FA; /* Sehr helles Grau für Input-Hintergrund */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+    border-color: #00897B; /* Dunkleres Türkis als Fokus-Rand */
+    outline: none; /* Standard-Outline entfernen */
+    box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.2); /* Dezenter türkiser Schatten beim Fokus */
+}
+
+/* Spezifisches Styling für Dateiupload-Input */
+input[type="file"] {
+    padding: 10px; /* Etwas weniger Padding für Dateiauswahl */
+    background-color: #EFF2F5; /* Leichter Unterschied zum Text-Input */
+    cursor: pointer;
+}
+
+
+/* =======================================================
+   Allgemeine Button-Styles für einheitliches Aussehen
+   ======================================================= */
+/* Hier werden alle primären Buttons gesammelt */
+.button-container button, .action-button, .back-button, #installButton, .delete-history-entry {
+    padding: 14px 30px; /* Etwas größere Buttons */
+    border: none;
+    border-radius: 8px; /* Leichter abgerundet */
+    cursor: pointer;
+    font-size: 1.05em; /* Etwas größere Schrift */
+    font-weight: 600; /* Fetter */
+    color: white; /* Textfarbe auf den Buttons */
+    min-width: 180px; /* Breitere Buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Einheitlicher, dezenter Schatten */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15); /* Leichter Textschatten für bessere Lesbarkeit */
+}
+
+.button-container button:hover, .action-button:hover, .back-button:hover, #installButton:hover, .delete-history-entry:hover {
+    transform: translateY(-3px); /* Deutlicherer "Lift"-Effekt */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18); /* Schatten wird intensiver */
+}
+
+/* Spezifisches Styling für Aktionen-Buttons (z.B. "Berechnen", "Speichern", "Profil speichern") */
+.action-button {
+    background-color: #00897B; /* Einheitliches Türkis für Haupt-Action-Buttons */
+    margin-top: 25px; /* Abstand nach oben */
+    width: auto; /* Breite an Inhalt anpassen, min-width von oben greift */
+}
+.action-button:hover {
+    background-color: #00695C;
+}
+
+/* =======================================================
+   Startseite Spezifische Styles
+   ======================================================= */
+#mainStartPage h1 {
+    font-size: 2.8em; /* Größerer Titel */
+    color: #546E7A; /* Ein mittleres Graublau */
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700; /* Sehr fett */
+    letter-spacing: -0.5px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Buttons untereinander */
+    align-items: center; /* Horizontal zentrieren */
+    gap: 18px; /* Abstand zwischen den Buttons */
+    margin-bottom: 30px; /* Abstand nach unten zur Installation */
+}
+
+/* Farben für die Hauptmenü-Buttons (dunkler und satter) */
+.btn-start { background-color: #558B2F; } /* Dunkleres, sattes Grün */
+.btn-start:hover { background-color: #33691E; }
+
+.btn-history { background-color: #00838F; } /* Dunkleres Türkis-Blau (jetzt für Ranking) */
+.btn-history:hover { background-color: #006064; }
+
+.btn-bumsbarchart { background-color: #FB8C00; } /* Sattes Orange (jetzt für Geschichte) */
+.btn-bumsbarchart:hover { background-color: #EF6C00; }
+
+/* DIES IST DER AKTUALISIERTE PROFILBUTTON */
+.btn-profile {
+    /* Absolute Positionierung entfernen */
+    /* position: absolute; */
+    /* top: 20px; */
+    /* right: 20px; */
+    width: 180px; /* Standardbreite wiederherstellen */
+    height: auto; /* Höhe automatisch anpassen */
+    border-radius: 8px; /* Nicht mehr rund */
+    background-color: #37474F; /* **Dunkleres Graublau für Profil-Button** */
+    color: white;
+    font-size: 1.05em; /* Standard-Schriftgröße */
+    font-weight: 600;
+    display: flex; /* Für Zentrierung des Textes */
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Standard-Schatten */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    /* z-index: 10;  Nicht mehr nötig im normalen Fluss */
+}
+
+.btn-profile:hover {
+    background-color: #263238; /* Noch dunkler beim Hover */
+    transform: translateY(-3px); /* Standard-Hover-Effekt */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18); /* Standard-Schatten beim Hover */
+}
+
+#logoutButton {
+    background-color: #607D8B; /* Dunkleres Grau für Logout */
+    margin-top: 20px;
+}
+#logoutButton:hover {
+    background-color: #455A64;
+}
+
+/* =======================================================
+   Login/Registrierung Spezifische Styles
+   ======================================================= */
+#registerPage h2, #loginPage h2 {
+    font-size: 2.5em;
+    color: #455A64; /* Dunkleres Graublau */
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+#registerPage p, #loginPage p {
+    margin-top: 25px;
+    font-size: 0.95em;
+    color: #607D8B;
+}
+
+#registerPage a, #loginPage a {
+    color: #00897B; /* Türkis Link */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#registerPage a:hover, #loginPage a:hover {
+    color: #00695C;
+    text-decoration: underline;
+}
+
+/* =======================================================
+   Dateneingabe & Profil-Formulare
+   ======================================================= */
+#nameInputPage h2, #dataInputPage h2, #resultPage h2, #rankingPage h2,
+#historyPage h2, #profilePage h2 {
+    color: #546E7A;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+/* Zurück-Button (universell für alle Seiten) */
+.back-button {
+    background-color: #607D8B; /* Etwas dunkleres Grau für Zurück-Button */
+    margin-top: 30px;
+}
+.back-button:hover {
+    background-color: #455A64;
+}
+
+/* =======================================================
+   Ergebnis-Anzeige & Speichern
+   ======================================================= */
+#finalCalculationResultDisplay {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #558B2F; /* Sattes Grün für das Ergebnis */
+    margin-bottom: 25px;
+    display: block; /* Stellt sicher, dass es eine eigene Zeile einnimmt */
+    text-align: center;
+}
+
+.save-button {
+    background-color: #558B2F; /* Dunkleres, sattes Grün für Speichern */
+    margin-top: 20px;
+}
+.save-button:hover {
+    background-color: #33691E;
+}
+
+
+/* =======================================================
+   Ranking-Seite (ehemals Historie)
+   ======================================================= */
+#historyList { /* ID bleibt historyList, aber die Seite ist jetzt rankingPage */
+    list-style: none; /* Keine Standard-Listenpunkte */
+    padding: 0;
+    margin-top: 20px;
+    text-align: left; /* Text linksbündig für bessere Lesbarkeit */
+}
+
+#historyList li {
+    background-color: #FDFDFD; /* Sehr helles Weiß */
+    border: 1px solid #E0E0E0; /* Hellerer Rand */
+    border-radius: 8px;
+    padding: 15px 20px; /* Mehr Padding */
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column; /* Inhalte untereinander */
+    align-items: flex-start; /* Links ausrichten */
+    font-size: 1em;
+    transition: all 0.2s ease;
+    position: relative; /* Für Löschen-Button */
+}
+
+#historyList li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#historyList li strong {
+    color: #546E7A; /* Name in Graublau */
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 6px;
+}
+
+#historyList li span {
+    display: inline-block;
+    font-weight: 700;
+    color: #558B2F; /* Dunkleres, sattes Grün für den Wert */
+    margin-right: 10px;
+}
+
+#historyList li small {
+    display: block;
+    margin-top: 5px; /* Abstand zum Wert */
+    color: #78909C; /* Dezenteres Grau für Datum */
+    font-size: 0.85em;
+}
+
+/* Löschen-Button in Historie-Eintrag */
+.delete-history-entry {
+    background-color: #B0BEC5; /* Helles Grau für Löschen, dezenter */
+    color: #FFFFFF; /* Weißer Text */
+    min-width: unset; /* Button-Breite anpassen */
+    padding: 8px 15px;
+    font-size: 0.9em;
+    margin-top: 10px; /* Abstand zum Inhalt */
+    align-self: flex-end; /* Rechtsbündig im flex-Container */
+}
+
+.delete-history-entry:hover {
+    background-color: #90A4AE; /* Dunkler beim Hover */
+}
+
+/* NEU: Styling für den Status-Text in der Historie (jetzt Ranking) */
+.history-status {
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+}
+
+.history-status.status-positive {
+    color: #2E7D32; /* Dunkleres Grün */
+    background-color: #E8F5E9;
+}
+
+.history-status.status-negative {
+    color: #C62828; /* Dunkleres Rot */
+    background-color: #FFEBEE;
+}
+
+.history-status.status-neutral { /* Neuer Status für mittlere Werte */
+    color: #F57C00; /* Orange */
+    background-color: #FFF3E0;
+}
+
+
+/* =======================================================
+   Profil-Seite Spezifische Styles
+   ======================================================= */
+#profileImageDisplay {
+    border: 1px solid #B0BEC5;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Abstand nach unten */
+    display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* Bildausschnitt anpassen */
+    background-color: #F8F9FA; /* Hintergrund falls Bild nicht geladen */
+}
+
+#profileResultDisplay {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #00897B; /* Türkis für Profil-Ergebnis */
+    margin-top: 25px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* =======================================================
+   Install Button (PWA)
+   ======================================================= */
+#installButton {
+    background-color: #00897B; /* Dunkleres Türkis */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#installButton:hover {
+    background-color: #00695C;
+}
+
+
+/* =======================================================
+   Responsivität (Anpassungen für kleinere Bildschirme)
+   ======================================================= */
+@media (max-width: 768px) {
+    .page {
+        width: 95%; /* Etwas mehr Breite auf kleinen Bildschirmen */
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.2em; /* Kleinere Überschriften auf Mobilgeräten */
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    /* Buttons werden auf Mobilgeräten fast vollbreit */
+    .button-container button, .action-button, .back-button, #installButton, .delete-history-entry {
+        width: calc(100% - 10px); /* Berücksichtigt margin */
+        min-width: unset; /* Entfernt Mindestbreite */
+        padding: 14px 20px;
+        font-size: 1em;
+        margin: 5px; /* Kleinerer Rand zwischen Buttons */
+    }
+
+    .btn-profile {
+        /* Standardwerte wiederherstellen, da es im Button-Container ist */
+        width: calc(100% - 10px); /* Oder 100% ohne margin */
+        height: auto;
+        font-size: 1em;
+        /* Absolute Positionierung entfernen */
+        /* top: unset; */
+        /* right: unset; */
+    }
+
+    #finalCalculationResultDisplay, #profileResultDisplay {
+        font-size: 1.8em; /* Kleinere Ergebnis-Texte auf Mobilgeräten */
+    }
+
+    #historyList li {
+        flex-direction: column; /* Historie-Einträge untereinander */
+        align-items: flex-start;
+    }
+
+    .history-list li .history-meta {
+        align-self: flex-start; /* Elemente untereinander an den Start */
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine PWA App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+    <main>
+        <div id="registerPage" class="page" style="display: none;">
+            <h2>Registrieren</h2>
+            <form id="registerForm">
+                <label for="regUsername">Benutzername:</label>
+                <input type="text" id="regUsername" required>
+                <br>
+                <label for="regPassword">Passwort:</label>
+                <input type="password" id="regPassword" required>
+                <br>
+                <button type="submit" class="action-button">Registrieren</button>
+                <p>Bereits registriert? <a href="#" id="goToLogin">Login</a></p>
+            </form>
+        </div>
+
+        <div id="loginPage" class="page" style="display: none;">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Benutzername:</label>
+                <input type="text" id="loginUsername" required>
+                <br>
+                <label for="loginPassword">Passwort:</label>
+                <input type="password" id="loginPassword" required>
+                <br>
+                <button type="submit" class="action-button">Login</button>
+                <p>Noch keinen Account? <a href="#" id="goToRegister">Registrieren</a></p>
+            </form>
+        </div>
+
+        <div id="mainStartPage" class="page" style="display: none;">
+            <h1>Willkommen zur Bumsbar App!</h1>
+            <p>Wähle eine Option:</p>
+            <div class="button-container">
+                <button id="mainStartButton" class="btn-start">Starten</button>
+                <button id="rankingButton" class="btn-history">Ranking</button>
+                <button id="historyButton" class="btn-bumsbarchart">Geschichte</button>
+                <button id="profileButton" class="btn-profile">Profil</button>
+                <button id="logoutButton">Abmelden</button>
+            </div>
+        </div>
+
+        <div id="nameInputPage" class="page" style="display: none;">
+            <h2>Namen eingeben</h2>
+            <form>
+                <label for="userNameInput">Name:</label>
+                <input type="text" id="userNameInput" required>
+                <br>
+                <button type="button" id="continueToDataButton" class="action-button">Weiter zur Dateneingabe</button>
+                <button type="button" class="back-button">Zurück</button>
+            </form>
+        </div>
+
+        <div id="dataInputPage" class="page" style="display: none;">
+            <h2>Dateneingabe für Berechnung</h2>
+            <form id="dataInputForm">
+                <label for="groesse">Größe (cm):</label>
+                <input type="number" id="groesse" required>
+                <br>
+                <label for="alter">Alter (Jahre):</label>
+                <input type="number" id="alter" required>
+                <br>
+                <label for="gewicht">Gewicht (kg):</label>
+                <input type="number" id="gewicht" required>
+                <br>
+                <label for="oberweite">Oberweite (cm):</label>
+                <input type="number" id="oberweite" required>
+                <br>
+                <label for="taille">Taille (cm):</label>
+                <input type="number" id="taille" required>
+                <br>
+                <label for="huefte">Hüfte (cm):</label>
+                <input type="number" id="huefte" required>
+                <br>
+                <button type="submit" class="action-button">Berechnen</button>
+                <button type="button" class="back-button">Zurück</button>
+            </form>
+        </div>
+
+        <div id="resultPage" class="page" style="display: none;">
+            <h2>Ergebnis</h2>
+            <p id="finalCalculationResultDisplay"></p>
+            <button id="saveFinalResultButton" class="action-button">Ergebnis speichern</button>
+            <button type="button" class="back-button">Zurück</button>
+        </div>
+
+        <div id="rankingPage" class="page" style="display: none;">
+            <h2>Ranking</h2>
+            <ul id="historyList">
+            </ul>
+            <button type="button" class="back-button">Zurück</button>
+        </div>
+
+        <div id="historyPage" class="page" style="display: none;">
+            <h2>Die Geburtsstunde der Bumsbarchart</h2>
+            <p>Es war ein lauwarmer Freitagabend im Juli, die Art von Abend, die wie geschaffen ist für tiefgründige Gespräche und absurde Ideen. In der alten WG von Thomas und Moritz, umgeben von leeren Pizzakartons und einer Aura von Männerfreundschaft, saßen Julian, Moritz, Johannes und Thomas auf der durchgesessenen Couch. Das Gespräch schlängelte sich durch die üblichen Themen – Arbeit, Sport, und natürlich, Frauen.</p>
+            <p>„Ganz ehrlich, Jungs“, sagte Julian und nahm einen Schluck von seinem Bier, „am Ende des Tages ist es doch egal, wie das Gesicht aussieht. Hauptsache, der Körper passt. Wenn's sein muss, nimmt man sie halt von hinten. Problem gelöst.“</p>
+            <p>Moritz grinste. „Das ist ja mal eine drastische Ansicht, Julian. Aber ich verstehe, was du meinst. Manchmal wünschte ich, man wüsste schon vorher, ob sich der ganze Aufwand lohnt.“</p>
+            <p>Thomas, der bisher schweigend seine Gedanken sortiert hatte, richtete sich plötzlich auf. Seine Augen funkelten. „Warte mal. Was, wenn wir das wissen könnten? Was, wenn es eine Möglichkeit gäbe, die 'Bumsbarkeit' einer Frau vorherzusagen, bevor man überhaupt die Schuhe schnürt für ein Date?“</p>
+            <p>Ein Moment der Stille folgte, dann brach Gelächter aus. Die Idee war so absurd, so politisch inkorrekt, dass sie einfach brillant war. Sie schauten sich an. Johannes hob sein Bier. „Das ist… das ist eine Idee, Thomas. Eine wirklich dumme, aber faszinierende Idee.“</p>
+            <p>Der Abend nahm eine neue Wendung. Das Bier floss, und das Gras tat sein Übriges, um die kreativen Schleusen zu öffnen. Julian kramte ein altes Flipchart und ein paar Filzstifte hervor, die noch aus Studienzeiten in einer Schublade der WG schlummerten.</p>
+            <p>„Also“, begann Thomas, der sich nun als der Mastermind der Operation etablierte, „was sind die Parameter? Was macht eine Frau… nun ja, 'bumsbar' im Julianschen Sinne?“</p>
+            <p>Moritz kritzelte wild drauflos. „Körpergröße? Brüste? Arsch? Beine? Haare? Und was ist mit Ausstrahlung? Humor?“</p>
+            <p>Julian schüttelte den Kopf. „Nein, nein, zu viele weiche Faktoren. Wir brauchen harte Fakten. Messbare Größen. Das hier soll eine Wissenschaft werden, keine Gefühlssache!“</p>
+            <p>Stundenlang schrieben sie Begriffe auf, strichen sie wieder durch, diskutierten, stritten und lachten hysterisch. Sie versuchten, jedem Körperteil einen numerischen Wert zuzuordnen, kombinierten Längen mit Umfängen, multiplizierten Proportionen und dividierten durch… nun ja, durch Dinge, die ihnen in ihrem Zustand als sinnvoll erschienen.</p>
+            <p>Die Formel wurde immer länger, immer komplexer. Sie enthielt Faktoren für die Beinlänge im Verhältnis zur Oberkörperlänge, den Hüft-Taille-Quotienten zum Quadrat, eine gewagte Exponentialfunktion für die „Anziehungskraft der Rückansicht“, und sogar eine geheimnisvolle Variable Z, die sie als „zufällige Zusatz-Zehenspitzen-Attraktivität“ bezeichneten – nur für den Fall, dass alle anderen Faktoren versagten.</p>
+            <p>Am Ende des Abends, umgeben von zerknülltem Papier, leeren Flaschen und einem halbfertigen Flipchart, das aussah, als hätte ein Mathematik-Professor einen Nervenzusammenbruch erlitten, stand sie da. Die Bumsbarchart. Eine scheinbar willkürliche Ansammlung von Zahlen, Symbolen und Pfeilen, die in einer einzigen, höchstkomplizierten Formel mündete.</p>
+            <p>Doch anders erwartet, landete diese Formel nicht in einer vergilbten WG-Schublade. Thomas, getrieben von einer Mischung aus Bierlaune und echter Geschäftsidee, sah das Potenzial. „Jungs“, sagte er am nächsten Morgen, während er Kaffee kochte und die ersten Kopfschmerzen spürte, „das war nicht nur bescheuert. Das war genial. Was, wenn wir das zu einer App machen?“</p>
+            <p>Julian, Moritz und Johannes, anfänglich skeptisch, ließen sich überzeugen. Mit einer Mischung aus Halbwissen über Programmierung, unzähligen YouTube-Tutorials und noch mehr schlaflosen Nächten in der WG, begannen sie, die „Bumsbarchart“-Formel in Code zu gießen. Sie optimierten Algorithmen, fügten eine intuitive Benutzeroberfläche hinzu und entwickelten ein System, bei dem Nutzer anonym und diskret die benötigten „Hard Facts“ eingeben konnten.</p>
+            <p>Die Gerüchte über die „Bumsbarchart App“ verbreiteten sich wie ein Lauffeuer in ihren Freundeskreisen. Junggesellen, frustriert von den Oberflächlichkeiten gängiger Dating-Apps und unsicheren Blind Dates, sahen darin eine Revolution. „Besser als Tinder, sicherer als Daten, die optimale Lösung für alle Junggesellen“, hieß es bald in Männergesprächen. Die App versprach nicht nur eine potenzielle "Bumsbarkeit"-Bewertung, sondern auch eine humorvolle, wenn auch zynische, Auseinandersetzung mit den realen Prioritäten vieler Männer.</p>
+            <p>Was als betrunkene Idee in einer WG begann, wurde zu einem geheimen Hit – ein Werkzeug, das unter der Hand weitergegeben wurde und das Dating-Leben einiger junger Männer auf unerwartete Weise „optimierte“. Ob es ethisch vertretbar war? Eine andere Frage. Aber für Julian, Moritz, Johannes und Thomas war es der Beweis: Manchmal entstehen die verrücktesten Erfindungen aus den absurdsten Gedanken</p>
+            <button type="button" class="back-button">Zurück</button>
+        </div>
+
+        <div id="profilePage" class="page" style="display: none;">
+            <h2>Mein Profil</h2>
+            <form id="profileForm">
+                <label for="profileNameInput">Profilname:</label>
+                <input type="text" id="profileNameInput" required>
+                <br>
+                <label for="profileGroesseInput">Größe (cm):</label>
+                <input type="number" id="profileGroesseInput" required>
+                <br>
+                <label for="profileAlterInput">Alter (Jahre):</label>
+                <input type="number" id="profileAlterInput" required>
+                <br>
+                <label for="profileGewichtInput">Gewicht (kg):</label>
+                <input type="number" id="profileGewichtInput" required>
+                <br>
+                <label for="profileOberweiteInput">Oberweite (cm):</label>
+                <input type="number" id="profileOberweiteInput" required>
+                <br>
+                <label for="profileTailleInput">Taille (cm):</label>
+                <input type="number" id="profileTailleInput" required>
+                <br>
+                <label for="profileHuefteInput">Hüfte (cm):</label>
+                <input type="number" id="profileHuefteInput" required>
+                <br>
+                <label for="profileImageUpload">Profilbild hochladen:</label>
+                <input type="file" id="profileImageUpload" accept="image/*">
+                <br>
+                <img id="profileImageDisplay" src="#" alt="Profilbild Vorschau" style="max-width: 200px; max-height: 200px; margin-top: 10px; display: none;">
+                <br>
+                <p id="profileResultDisplay"></p>
+                <button type="submit" class="action-button">Profil speichern</button>
+                <button type="button" class="back-button">Zurück</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker erfolgreich registriert mit Scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker Registrierung fehlgeschlagen:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
